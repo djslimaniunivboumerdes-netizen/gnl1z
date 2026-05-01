@@ -1,0 +1,2428 @@
+[
+  {
+    "tag": "7X3-E-03.17",
+    "name": "Échangeur (Exchanger) — 7X3-E-03.17",
+    "name_en": "Échangeur (Exchanger) — 7X3-E-03.17",
+    "name_fr": "Échangeur (Exchanger) — 7X3-E-03.17",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "7X3",
+    "section": "Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 16,
+      "total_qty_installed": 50
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X01-E-501",
+    "name": "Condenseur de tête",
+    "name_en": "Condenseur de tête",
+    "name_fr": "Condenseur de tête",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 8.6,
+      "serial_no": "35959-6",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\"",
+        "Racloir de joint",
+        "Kit nettoyage tubes"
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 15,
+      "total_qty_installed": 90
+    },
+    "notes": "Condenseur de tête - Shell & Tube - SS304 - 850m²"
+  },
+  {
+    "tag": "X01-E-502",
+    "name": "Rebouilleur de MEA",
+    "name_en": "Rebouilleur de MEA",
+    "name_fr": "Rebouilleur de MEA",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 7.2,
+      "serial_no": "35961-6",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\"",
+        "Racloir de joint"
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 16,
+      "total_qty_installed": 252
+    },
+    "notes": "Rebouilleur MEA - Kettle Reboiler - 8.5MW"
+  },
+  {
+    "tag": "X01-E-503A",
+    "name": "Échangeur MEA Lean/Rich (A)",
+    "name_en": "Échangeur MEA Lean/Rich (A)",
+    "name_fr": "Échangeur MEA Lean/Rich (A)",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 8.6,
+      "serial_no": "35962-6",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\""
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 11,
+      "total_qty_installed": 408
+    },
+    "notes": "Échangeur MEA Lean/Rich (A) - Shell & Tube"
+  },
+  {
+    "tag": "X01-E-503B",
+    "name": "Échangeur MEA Lean/Rich (B)",
+    "name_en": "Échangeur MEA Lean/Rich (B)",
+    "name_fr": "Échangeur MEA Lean/Rich (B)",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 8.6,
+      "serial_no": "35962-6",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\""
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 11,
+      "total_qty_installed": 408
+    },
+    "notes": "Échangeur MEA Lean/Rich (B) - Shell & Tube"
+  },
+  {
+    "tag": "X01-E-504",
+    "name": "Feed Gas Pre-Heater",
+    "name_en": "Feed Gas Pre-Heater",
+    "name_fr": "Feed Gas Pre-Heater",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 15.5,
+      "serial_no": "387704-6",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\"",
+        "Socket thermowell"
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 18,
+      "total_qty_installed": 489
+    },
+    "notes": "Feed Gas Pre-Heater - 2.5MW - 20°C→50°C"
+  },
+  {
+    "tag": "X01-E-505",
+    "name": "Échangeur Principal",
+    "name_en": "Échangeur Principal",
+    "name_fr": "Échangeur Principal",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 15.5,
+      "serial_no": "35963-6",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\""
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 14,
+      "total_qty_installed": 118
+    },
+    "notes": "Échangeur Principal - Tube bundle A249 TP304"
+  },
+  {
+    "tag": "X01-E-506",
+    "name": "Feed Gas Pre-Heater",
+    "name_en": "Feed Gas Pre-Heater",
+    "name_fr": "Feed Gas Pre-Heater",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 15.5,
+      "serial_no": "387704-6",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\"",
+        "Socket thermowell"
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 10,
+      "total_qty_installed": 93
+    },
+    "notes": "Feed Gas Pre-Heater - 2.5MW"
+  },
+  {
+    "tag": "X01-F-501",
+    "name": "Fond / Colonne (Vessel/Column) — X01-F-501",
+    "name_en": "Fond / Colonne (Vessel/Column) — X01-F-501",
+    "name_fr": "Fond / Colonne (Vessel/Column) — X01-F-501",
+    "type": {
+      "code": "F",
+      "name": "Fond / Colonne (Vessel/Column)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 22950,
+      "volume_m3": 27,
+      "pressure_bar": 8.4,
+      "serial_no": "35959-6",
+      "bolt_size": "M20"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [
+        "Clé à frap 1 3/16\"",
+        "Racloir de joint",
+        "Jauge de niveau",
+        "Clé torque 1 1/2\""
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 18,
+      "total_qty_installed": 3288
+    },
+    "notes": "Régénérateur MEA - Décarbonatation"
+  },
+  {
+    "tag": "X01-F-502",
+    "name": "Fond / Colonne (Vessel/Column) — X01-F-502",
+    "name_en": "Fond / Colonne (Vessel/Column) — X01-F-502",
+    "name_fr": "Fond / Colonne (Vessel/Column) — X01-F-502",
+    "type": {
+      "code": "F",
+      "name": "Fond / Colonne (Vessel/Column)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 147050,
+      "volume_m3": 173,
+      "pressure_bar": 81.0,
+      "serial_no": "35960-6",
+      "bolt_size": "M24"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [
+        "Clé à frap 1 7/16\"",
+        "Clé à choc pneumatique 3/4\"",
+        "Racloir de joint"
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 30,
+      "total_qty_installed": 2774
+    },
+    "notes": "Absorbeur MEA - 55.8m x 5.5m - Acier HIC"
+  },
+  {
+    "tag": "X01-G-502",
+    "name": "Ballon / Séparateur (Drum/Separator) — X01-G-502",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X01-G-502",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X01-G-502",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 300,
+      "volume_m3": 0,
+      "pressure_bar": 8.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\""
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 6
+    },
+    "notes": "Ballon séparateur MEA"
+  },
+  {
+    "tag": "X01-G-507",
+    "name": "Flash Drum MEA",
+    "name_en": "Flash Drum MEA",
+    "name_fr": "Flash Drum MEA",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 300,
+      "volume_m3": 0,
+      "pressure_bar": 7.8,
+      "serial_no": "V-2089-F",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [
+        "Clé à frap 15/16\"",
+        "Racloir de joint"
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 15
+    },
+    "notes": "Flash Drum MEA - Horizontal"
+  },
+  {
+    "tag": "X01-P-501",
+    "name": "Pompe / Filtre (Pump/Filter) — X01-P-501",
+    "name_en": "Pompe / Filtre (Pump/Filter) — X01-P-501",
+    "name_fr": "Pompe / Filtre (Pump/Filter) — X01-P-501",
+    "type": {
+      "code": "P",
+      "name": "Pompe / Filtre (Pump/Filter)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 150,
+      "volume_m3": 0,
+      "pressure_bar": 8.0,
+      "serial_no": "",
+      "bolt_size": "M12"
+    },
+    "maintenance": {
+      "lifting_method": "manual_hoist",
+      "tools": [
+        "Clé à frap 3/4\"",
+        "Kit filtre cartouche"
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 9,
+      "total_qty_installed": 56
+    },
+    "notes": "Filtre MEA - Charbon actif RB-4"
+  },
+  {
+    "tag": "X01-P-502",
+    "name": "Pompe / Filtre (Pump/Filter) — X01-P-502",
+    "name_en": "Pompe / Filtre (Pump/Filter) — X01-P-502",
+    "name_fr": "Pompe / Filtre (Pump/Filter) — X01-P-502",
+    "type": {
+      "code": "P",
+      "name": "Pompe / Filtre (Pump/Filter)"
+    },
+    "unit": "X01",
+    "section": "Décarbonatation",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 150,
+      "volume_m3": 0,
+      "pressure_bar": 8.0,
+      "serial_no": "",
+      "bolt_size": "M12"
+    },
+    "maintenance": {
+      "lifting_method": "manual_hoist",
+      "tools": [
+        "Clé à frap 3/4\"",
+        "Kit filtre cartouche"
+      ],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 16
+    },
+    "notes": "Filtre MEA - Cartouche CF30-CIH"
+  },
+  {
+    "tag": "X02-E-03.15",
+    "name": "Échangeur (Exchanger) — X02-E-03.15",
+    "name_en": "Échangeur (Exchanger) — X02-E-03.15",
+    "name_fr": "Échangeur (Exchanger) — X02-E-03.15",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 7
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-E-03.16",
+    "name": "Échangeur (Exchanger) — X02-E-03.16",
+    "name_en": "Échangeur (Exchanger) — X02-E-03.16",
+    "name_fr": "Échangeur (Exchanger) — X02-E-03.16",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 18,
+      "total_qty_installed": 496
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-E-15.50",
+    "name": "Échangeur (Exchanger) — X02-E-15.50",
+    "name_en": "Échangeur (Exchanger) — X02-E-15.50",
+    "name_fr": "Échangeur (Exchanger) — X02-E-15.50",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 8,
+      "total_qty_installed": 76
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-E-15.51",
+    "name": "Échangeur (Exchanger) — X02-E-15.51",
+    "name_en": "Échangeur (Exchanger) — X02-E-15.51",
+    "name_fr": "Échangeur (Exchanger) — X02-E-15.51",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 7
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-G-03.14",
+    "name": "Ballon / Séparateur (Drum/Separator) — X02-G-03.14",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X02-G-03.14",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X02-G-03.14",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 47
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-G-07.87",
+    "name": "Ballon / Séparateur (Drum/Separator) — X02-G-07.87",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X02-G-07.87",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X02-G-07.87",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 11,
+      "total_qty_installed": 311
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-G-304",
+    "name": "Ballon / Séparateur (Drum/Separator) — X02-G-304",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X02-G-304",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X02-G-304",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 6
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-P-03.12A",
+    "name": "Pompe / Filtre (Pump/Filter) — X02-P-03.12A",
+    "name_en": "Pompe / Filtre (Pump/Filter) — X02-P-03.12A",
+    "name_fr": "Pompe / Filtre (Pump/Filter) — X02-P-03.12A",
+    "type": {
+      "code": "P",
+      "name": "Pompe / Filtre (Pump/Filter)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 150,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M12"
+    },
+    "maintenance": {
+      "lifting_method": "manual_hoist",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 103
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-P-03.12B",
+    "name": "Pompe / Filtre (Pump/Filter) — X02-P-03.12B",
+    "name_en": "Pompe / Filtre (Pump/Filter) — X02-P-03.12B",
+    "name_fr": "Pompe / Filtre (Pump/Filter) — X02-P-03.12B",
+    "type": {
+      "code": "P",
+      "name": "Pompe / Filtre (Pump/Filter)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 150,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M12"
+    },
+    "maintenance": {
+      "lifting_method": "manual_hoist",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 103
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-P-03.14A",
+    "name": "Pompe / Filtre (Pump/Filter) — X02-P-03.14A",
+    "name_en": "Pompe / Filtre (Pump/Filter) — X02-P-03.14A",
+    "name_fr": "Pompe / Filtre (Pump/Filter) — X02-P-03.14A",
+    "type": {
+      "code": "P",
+      "name": "Pompe / Filtre (Pump/Filter)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 150,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M12"
+    },
+    "maintenance": {
+      "lifting_method": "manual_hoist",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 103
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-P-03.14B",
+    "name": "Pompe / Filtre (Pump/Filter) — X02-P-03.14B",
+    "name_en": "Pompe / Filtre (Pump/Filter) — X02-P-03.14B",
+    "name_fr": "Pompe / Filtre (Pump/Filter) — X02-P-03.14B",
+    "type": {
+      "code": "P",
+      "name": "Pompe / Filtre (Pump/Filter)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 150,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M12"
+    },
+    "maintenance": {
+      "lifting_method": "manual_hoist",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 103
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X02-R-03.12",
+    "name": "Réservoir / Réacteur (Tank/Reactor) — X02-R-03.12",
+    "name_en": "Réservoir / Réacteur (Tank/Reactor) — X02-R-03.12",
+    "name_fr": "Réservoir / Réacteur (Tank/Reactor) — X02-R-03.12",
+    "type": {
+      "code": "R",
+      "name": "Réservoir / Réacteur (Tank/Reactor)"
+    },
+    "unit": "X02",
+    "section": "Déshydratation / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 8000,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M20"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 5,
+      "total_qty_installed": 5
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X03-E-05.13",
+    "name": "Échangeur (Exchanger) — X03-E-05.13",
+    "name_en": "Échangeur (Exchanger) — X03-E-05.13",
+    "name_fr": "Échangeur (Exchanger) — X03-E-05.13",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X03",
+    "section": "Propane / Utilities",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 12,
+      "total_qty_installed": 16
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X03-E-05.14A",
+    "name": "Échangeur (Exchanger) — X03-E-05.14A",
+    "name_en": "Échangeur (Exchanger) — X03-E-05.14A",
+    "name_fr": "Échangeur (Exchanger) — X03-E-05.14A",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X03",
+    "section": "Propane / Utilities",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 17,
+      "total_qty_installed": 117
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X03-E-05.14B",
+    "name": "Échangeur (Exchanger) — X03-E-05.14B",
+    "name_en": "Échangeur (Exchanger) — X03-E-05.14B",
+    "name_fr": "Échangeur (Exchanger) — X03-E-05.14B",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X03",
+    "section": "Propane / Utilities",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 11,
+      "total_qty_installed": 67
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X03-E-05.15",
+    "name": "Échangeur (Exchanger) — X03-E-05.15",
+    "name_en": "Échangeur (Exchanger) — X03-E-05.15",
+    "name_fr": "Échangeur (Exchanger) — X03-E-05.15",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X03",
+    "section": "Propane / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 9,
+      "total_qty_installed": 76
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X03-F-05.16",
+    "name": "Fond / Colonne (Vessel/Column) — X03-F-05.16",
+    "name_en": "Fond / Colonne (Vessel/Column) — X03-F-05.16",
+    "name_fr": "Fond / Colonne (Vessel/Column) — X03-F-05.16",
+    "type": {
+      "code": "F",
+      "name": "Fond / Colonne (Vessel/Column)"
+    },
+    "unit": "X03",
+    "section": "Propane / Utilities",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 15000,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M20"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 5,
+      "total_qty_installed": 29
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X03-G-07.86",
+    "name": "Ballon / Séparateur (Drum/Separator) — X03-G-07.86",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X03-G-07.86",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X03-G-07.86",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X03",
+    "section": "Propane / Utilities",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 5,
+      "total_qty_installed": 8
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.21",
+    "name": "Échangeur (Exchanger) — X04-E-05.21",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.21",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.21",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 7,
+      "total_qty_installed": 90
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.22",
+    "name": "Échangeur (Exchanger) — X04-E-05.22",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.22",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.22",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 3,
+      "total_qty_installed": 6
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.23",
+    "name": "Échangeur (Exchanger) — X04-E-05.23",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.23",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.23",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 8
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.24",
+    "name": "Échangeur (Exchanger) — X04-E-05.24",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.24",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.24",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 6
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.25A",
+    "name": "Échangeur (Exchanger) — X04-E-05.25A",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.25A",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.25A",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 13
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.25B",
+    "name": "Échangeur (Exchanger) — X04-E-05.25B",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.25B",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.25B",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 7
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.26A",
+    "name": "Échangeur (Exchanger) — X04-E-05.26A",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.26A",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.26A",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 9
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.26B",
+    "name": "Échangeur (Exchanger) — X04-E-05.26B",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.26B",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.26B",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 8
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-05.40",
+    "name": "Échangeur (Exchanger) — X04-E-05.40",
+    "name_en": "Échangeur (Exchanger) — X04-E-05.40",
+    "name_fr": "Échangeur (Exchanger) — X04-E-05.40",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 9,
+      "total_qty_installed": 15
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-07.13",
+    "name": "Échangeur (Exchanger) — X04-E-07.13",
+    "name_en": "Échangeur (Exchanger) — X04-E-07.13",
+    "name_fr": "Échangeur (Exchanger) — X04-E-07.13",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 7,
+      "total_qty_installed": 8
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-07.17",
+    "name": "Échangeur (Exchanger) — X04-E-07.17",
+    "name_en": "Échangeur (Exchanger) — X04-E-07.17",
+    "name_fr": "Échangeur (Exchanger) — X04-E-07.17",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 8,
+      "total_qty_installed": 8
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-E-07.97",
+    "name": "Échangeur (Exchanger) — X04-E-07.97",
+    "name_en": "Échangeur (Exchanger) — X04-E-07.97",
+    "name_fr": "Échangeur (Exchanger) — X04-E-07.97",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 11
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-F-07.11",
+    "name": "Fond / Colonne (Vessel/Column) — X04-F-07.11",
+    "name_en": "Fond / Colonne (Vessel/Column) — X04-F-07.11",
+    "name_fr": "Fond / Colonne (Vessel/Column) — X04-F-07.11",
+    "type": {
+      "code": "F",
+      "name": "Fond / Colonne (Vessel/Column)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 15000,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M20"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 13,
+      "total_qty_installed": 107
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-G-07.14",
+    "name": "Ballon / Séparateur (Drum/Separator) — X04-G-07.14",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X04-G-07.14",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X04-G-07.14",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 7,
+      "total_qty_installed": 12
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-G-07.85",
+    "name": "Ballon / Séparateur (Drum/Separator) — X04-G-07.85",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X04-G-07.85",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X04-G-07.85",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 18
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-G-07.90",
+    "name": "Ballon / Séparateur (Drum/Separator) — X04-G-07.90",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X04-G-07.90",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X04-G-07.90",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 18,
+      "total_qty_installed": 26
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X04-G-07.91",
+    "name": "Ballon / Séparateur (Drum/Separator) — X04-G-07.91",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X04-G-07.91",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X04-G-07.91",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X04",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 7
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X05-E-05.11",
+    "name": "Échangeur (Exchanger) — X05-E-05.11",
+    "name_en": "Échangeur (Exchanger) — X05-E-05.11",
+    "name_fr": "Échangeur (Exchanger) — X05-E-05.11",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X05",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 12,
+      "total_qty_installed": 54
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X05-E-05.12",
+    "name": "Échangeur (Exchanger) — X05-E-05.12",
+    "name_en": "Échangeur (Exchanger) — X05-E-05.12",
+    "name_fr": "Échangeur (Exchanger) — X05-E-05.12",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X05",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 17,
+      "total_qty_installed": 211
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X05-G-07.88",
+    "name": "Ballon / Séparateur (Drum/Separator) — X05-G-07.88",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X05-G-07.88",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X05-G-07.88",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X05",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 7,
+      "total_qty_installed": 9
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X05-G-07.89",
+    "name": "Ballon / Séparateur (Drum/Separator) — X05-G-07.89",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X05-G-07.89",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X05-G-07.89",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X05",
+    "section": "Propane / Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 7,
+      "total_qty_installed": 9
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X06-E-05.30",
+    "name": "Échangeur (Exchanger) — X06-E-05.30",
+    "name_en": "Échangeur (Exchanger) — X06-E-05.30",
+    "name_fr": "Échangeur (Exchanger) — X06-E-05.30",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X06",
+    "section": "Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 8,
+      "total_qty_installed": 50
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X06-G-07.80",
+    "name": "Ballon / Séparateur (Drum/Separator) — X06-G-07.80",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X06-G-07.80",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X06-G-07.80",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X06",
+    "section": "Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 6
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X06-G-07.83",
+    "name": "Ballon / Séparateur (Drum/Separator) — X06-G-07.83",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X06-G-07.83",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X06-G-07.83",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X06",
+    "section": "Liquéfaction",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 9,
+      "total_qty_installed": 148
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X07-E-07.22",
+    "name": "Échangeur (Exchanger) — X07-E-07.22",
+    "name_en": "Échangeur (Exchanger) — X07-E-07.22",
+    "name_fr": "Échangeur (Exchanger) — X07-E-07.22",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X07",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 7,
+      "total_qty_installed": 11
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X07-E-07.23",
+    "name": "Échangeur (Exchanger) — X07-E-07.23",
+    "name_en": "Échangeur (Exchanger) — X07-E-07.23",
+    "name_fr": "Échangeur (Exchanger) — X07-E-07.23",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X07",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 16,
+      "total_qty_installed": 177
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X07-E-07.30",
+    "name": "Échangeur (Exchanger) — X07-E-07.30",
+    "name_en": "Échangeur (Exchanger) — X07-E-07.30",
+    "name_fr": "Échangeur (Exchanger) — X07-E-07.30",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X07",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 16,
+      "total_qty_installed": 185
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X07-F-07.21",
+    "name": "Fond / Colonne (Vessel/Column) — X07-F-07.21",
+    "name_en": "Fond / Colonne (Vessel/Column) — X07-F-07.21",
+    "name_fr": "Fond / Colonne (Vessel/Column) — X07-F-07.21",
+    "type": {
+      "code": "F",
+      "name": "Fond / Colonne (Vessel/Column)"
+    },
+    "unit": "X07",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 15000,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M20"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 17,
+      "total_qty_installed": 328
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X07-G-07.24",
+    "name": "Ballon / Séparateur (Drum/Separator) — X07-G-07.24",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X07-G-07.24",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X07-G-07.24",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X07",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 4,
+      "total_qty_installed": 11
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X08-E-07.32",
+    "name": "Échangeur (Exchanger) — X08-E-07.32",
+    "name_en": "Échangeur (Exchanger) — X08-E-07.32",
+    "name_fr": "Échangeur (Exchanger) — X08-E-07.32",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X08",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 6
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X08-E-07.33",
+    "name": "Échangeur (Exchanger) — X08-E-07.33",
+    "name_en": "Échangeur (Exchanger) — X08-E-07.33",
+    "name_fr": "Échangeur (Exchanger) — X08-E-07.33",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X08",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 11,
+      "total_qty_installed": 156
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X08-F-07.31",
+    "name": "Fond / Colonne (Vessel/Column) — X08-F-07.31",
+    "name_en": "Fond / Colonne (Vessel/Column) — X08-F-07.31",
+    "name_fr": "Fond / Colonne (Vessel/Column) — X08-F-07.31",
+    "type": {
+      "code": "F",
+      "name": "Fond / Colonne (Vessel/Column)"
+    },
+    "unit": "X08",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 15000,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M20"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 17,
+      "total_qty_installed": 564
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X08-G-07.34",
+    "name": "Ballon / Séparateur (Drum/Separator) — X08-G-07.34",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X08-G-07.34",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X08-G-07.34",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X08",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 7,
+      "total_qty_installed": 13
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X08-G-07.36",
+    "name": "Ballon / Séparateur (Drum/Separator) — X08-G-07.36",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X08-G-07.36",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X08-G-07.36",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X08",
+    "section": "Liquéfaction / Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 7,
+      "total_qty_installed": 11
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X09-E-07.42",
+    "name": "Échangeur (Exchanger) — X09-E-07.42",
+    "name_en": "Échangeur (Exchanger) — X09-E-07.42",
+    "name_fr": "Échangeur (Exchanger) — X09-E-07.42",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X09",
+    "section": "Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 8,
+      "total_qty_installed": 17
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X09-E-07.43",
+    "name": "Échangeur (Exchanger) — X09-E-07.43",
+    "name_en": "Échangeur (Exchanger) — X09-E-07.43",
+    "name_fr": "Échangeur (Exchanger) — X09-E-07.43",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X09",
+    "section": "Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 9,
+      "total_qty_installed": 117
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X09-F-07.41",
+    "name": "Fond / Colonne (Vessel/Column) — X09-F-07.41",
+    "name_en": "Fond / Colonne (Vessel/Column) — X09-F-07.41",
+    "name_fr": "Fond / Colonne (Vessel/Column) — X09-F-07.41",
+    "type": {
+      "code": "F",
+      "name": "Fond / Colonne (Vessel/Column)"
+    },
+    "unit": "X09",
+    "section": "Fractionnement",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 15000,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M20"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 9,
+      "total_qty_installed": 27
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X09-G-07.44",
+    "name": "Ballon / Séparateur (Drum/Separator) — X09-G-07.44",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X09-G-07.44",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X09-G-07.44",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X09",
+    "section": "Fractionnement",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 8,
+      "total_qty_installed": 84
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X10-E-07.38",
+    "name": "Échangeur (Exchanger) — X10-E-07.38",
+    "name_en": "Échangeur (Exchanger) — X10-E-07.38",
+    "name_fr": "Échangeur (Exchanger) — X10-E-07.38",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X10",
+    "section": "Fractionnement / Stockage",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 10,
+      "total_qty_installed": 19
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X10-E-07.39",
+    "name": "Échangeur (Exchanger) — X10-E-07.39",
+    "name_en": "Échangeur (Exchanger) — X10-E-07.39",
+    "name_fr": "Échangeur (Exchanger) — X10-E-07.39",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X10",
+    "section": "Fractionnement / Stockage",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 6,
+      "total_qty_installed": 14
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X10-E-07.52",
+    "name": "Échangeur (Exchanger) — X10-E-07.52",
+    "name_en": "Échangeur (Exchanger) — X10-E-07.52",
+    "name_fr": "Échangeur (Exchanger) — X10-E-07.52",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X10",
+    "section": "Fractionnement / Stockage",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 14,
+      "total_qty_installed": 278
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X10-E-07.53",
+    "name": "Échangeur (Exchanger) — X10-E-07.53",
+    "name_en": "Échangeur (Exchanger) — X10-E-07.53",
+    "name_fr": "Échangeur (Exchanger) — X10-E-07.53",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X10",
+    "section": "Fractionnement / Stockage",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 8,
+      "total_qty_installed": 154
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X10-E-07.58",
+    "name": "Échangeur (Exchanger) — X10-E-07.58",
+    "name_en": "Échangeur (Exchanger) — X10-E-07.58",
+    "name_fr": "Échangeur (Exchanger) — X10-E-07.58",
+    "type": {
+      "code": "E",
+      "name": "Échangeur (Exchanger)"
+    },
+    "unit": "X10",
+    "section": "Fractionnement / Stockage",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 600,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 9,
+      "total_qty_installed": 16
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X10-F-07.51",
+    "name": "Fond / Colonne (Vessel/Column) — X10-F-07.51",
+    "name_en": "Fond / Colonne (Vessel/Column) — X10-F-07.51",
+    "name_fr": "Fond / Colonne (Vessel/Column) — X10-F-07.51",
+    "type": {
+      "code": "F",
+      "name": "Fond / Colonne (Vessel/Column)"
+    },
+    "unit": "X10",
+    "section": "Fractionnement / Stockage",
+    "testing_status": "DEROGATION",
+    "technical": {
+      "weight_kg": 15000,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M20"
+    },
+    "maintenance": {
+      "lifting_method": "heavy_lift",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 16,
+      "total_qty_installed": 173
+    },
+    "notes": ""
+  },
+  {
+    "tag": "X10-G-07.54",
+    "name": "Ballon / Séparateur (Drum/Separator) — X10-G-07.54",
+    "name_en": "Ballon / Séparateur (Drum/Separator) — X10-G-07.54",
+    "name_fr": "Ballon / Séparateur (Drum/Separator) — X10-G-07.54",
+    "type": {
+      "code": "G",
+      "name": "Ballon / Séparateur (Drum/Separator)"
+    },
+    "unit": "X10",
+    "section": "Fractionnement / Stockage",
+    "testing_status": "PREVENTIVE",
+    "technical": {
+      "weight_kg": 400,
+      "volume_m3": 0,
+      "pressure_bar": 0.0,
+      "serial_no": "",
+      "bolt_size": "M16"
+    },
+    "maintenance": {
+      "lifting_method": "chain_hoist_2t",
+      "tools": [],
+      "last_tested": "",
+      "next_test_due": ""
+    },
+    "spare_parts": {
+      "count": 9,
+      "total_qty_installed": 60
+    },
+    "notes": ""
+  }
+]
