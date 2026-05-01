@@ -3,24 +3,44 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { I18nProvider } from "@/contexts/I18nContext";
+import AppLayout from "@/components/layout/AppLayout";
+import Dashboard from "./pages/Dashboard";
+import About from "./pages/About";
+import EquipmentList from "./pages/EquipmentList";
+import EquipmentDetail from "./pages/EquipmentDetail";
+import DcsDirectory from "./pages/DcsDirectory";
+import Manuals from "./pages/Manuals";
+import Author from "./pages/Author";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider>
+      <I18nProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route element={<AppLayout />}>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/equipment" element={<EquipmentList />} />
+                <Route path="/equipment/:tag" element={<EquipmentDetail />} />
+                <Route path="/dcs" element={<DcsDirectory />} />
+                <Route path="/manuals" element={<Manuals />} />
+                <Route path="/author" element={<Author />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </I18nProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
