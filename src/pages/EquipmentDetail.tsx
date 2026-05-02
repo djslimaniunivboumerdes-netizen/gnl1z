@@ -1,17 +1,23 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Fuse from "fuse.js";
-import { ArrowLeft, Copy, Check, Download, Wrench, Anchor, Snowflake, Package, Info, Search } from "lucide-react";
+import { format, parseISO } from "date-fns";
+import { ArrowLeft, Copy, Check, Download, Wrench, Anchor, Snowflake, Package, Info, Search, FileText, Save, CalendarIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getEquipmentByTag, type SparePart } from "@/data";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { getEquipmentByTag, isShellAndTube, type SparePart, type Equipment } from "@/data";
 import {
   predictWrench, predictToolKit, suggestShackle, safetyLoadKg,
-  insulationRecommendation, exportToCsv,
+  insulationRecommendation, exportToCsv, defaultBoltForType,
 } from "@/lib/industrial";
 import { useI18n } from "@/contexts/I18nContext";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 import NotFound from "./NotFound";
 
 export default function EquipmentDetail() {
@@ -21,8 +27,9 @@ export default function EquipmentDetail() {
 
   if (!eq) return <NotFound />;
 
-  const wrench = predictWrench(eq.technical.bolt_size);
-  const tools = predictToolKit(eq.technical.bolt_size);
+  const boltSize = defaultBoltForType(eq.type.code);
+  const wrench = predictWrench(boltSize);
+  const tools = predictToolKit(boltSize);
   const shackle = suggestShackle(eq.technical.weight_kg);
   const safety = safetyLoadKg(eq.technical.weight_kg);
   const insulation = insulationRecommendation(eq.type.code, eq.technical.temperature_c);
@@ -33,7 +40,6 @@ export default function EquipmentDetail() {
         <Link to="/equipment"><ArrowLeft className="h-4 w-4 mr-1" /> {t("back")}</Link>
       </Button>
 
-      {/* Header card */}
       <div className="relative overflow-hidden border border-border rounded-lg bg-gradient-industrial p-6 md:p-8 mb-6 text-white">
         <div className="absolute top-0 right-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
         <div className="absolute top-0 left-0 right-0 h-1 stripe-warning" />
@@ -63,33 +69,16 @@ export default function EquipmentDetail() {
           <TabsTrigger value="insulation" className="gap-1.5"><Snowflake className="h-3.5 w-3.5" /> {t("insulation")}</TabsTrigger>
         </TabsList>
 
-        {/* Tab 1: Tech */}
-        <TabsContent value="tech" className="mt-5">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            <Field label={t("serial")} value={eq.technical.serial_no || "—"} mono />
-            <Field label="Test Type" value={eq.testing_status} />
-            <Field label="Last Date" value={eq.maintenance.last_tested || "—"} />
-            <Field label="Next Due" value={eq.maintenance.next_test_due || "—"} />
-            <Field label={t("pressure")} value={eq.technical.pressure_bar} mono accent />
-            <Field label={t("volume")} value={eq.technical.volume_m3} mono />
-            <Field label={t("weight")} value={eq.technical.weight_kg} mono accent />
-            <Field label={t("bolt")} value={eq.technical.bolt_size || "—"} mono />
-          </div>
+        <TabsContent value="tech" className="mt-5 space-y-5">
+          <TechInfoTab eq={eq} />
         </TabsContent>
 
-        {/* Tab 2: PDR */}
         <TabsContent value="pdr" className="mt-5"><PdrTab parts={eq.spare_parts.items ?? []} tag={eq.tag} /></TabsContent>
 
-        {/* Tab 3: Tools */}
         <TabsContent value="tools" className="mt-5">
-          {!eq.technical.bolt_size ? (
-            <EmptyState message={t("noBoltData")} />
-          ) : (
-            <ToolsTab boltSize={eq.technical.bolt_size} wrench={wrench} tools={tools} liftingMethod={eq.maintenance.lifting_method} extraTools={eq.maintenance.tools} />
-          )}
+          <ToolsTab boltSize={boltSize} wrench={wrench} tools={tools} liftingMethod={eq.maintenance.lifting_method} extraTools={eq.maintenance.tools} />
         </TabsContent>
 
-        {/* Tab 4: Lifting */}
         <TabsContent value="lifting" className="mt-5">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <BigStat label={t("weight")} value={`${eq.technical.weight_kg} kg`} />
@@ -121,7 +110,6 @@ export default function EquipmentDetail() {
           </div>
         </TabsContent>
 
-        {/* Tab 5: Insulation */}
         <TabsContent value="insulation" className="mt-5">
           <div className="border border-border rounded-lg bg-card p-6">
             <div className="flex items-center gap-2 mb-4">
@@ -144,6 +132,168 @@ export default function EquipmentDetail() {
       </Tabs>
     </div>
   );
+}
+
+function TechInfoTab({ eq }: { eq: Equipment }) {
+  const { t, lang } = useI18n();
+  const tp = eq.technical.test_pressure;
+  const isExch = isShellAndTube(eq);
+
+  return (
+    <>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <Field label={t("serial")} value={eq.technical.serial_no || "—"} mono />
+        <Field label={t("testType")} value={eq.testing_status} />
+        <Field label={t("pressure")} value={eq.technical.pressure_bar || "—"} mono accent />
+        <Field label={t("volume")} value={eq.technical.volume_m3 || "—"} mono />
+        <Field label={t("weight")} value={eq.technical.weight_kg} mono accent />
+        {eq.technical.temperature_c != null && <Field label="Temp (°C)" value={eq.technical.temperature_c} mono />}
+      </div>
+
+      {/* Test Pressure block */}
+      <div className="border border-border rounded-lg bg-card p-5">
+        <div className="flex items-center gap-2 mb-4">
+          <Info className="h-4 w-4 text-accent" />
+          <h3 className="font-display font-semibold">{t("testPressure")}</h3>
+          {isExch && <Badge variant="outline" className="font-mono text-[10px] ml-1">{lang === "en" ? "Shell & Tube" : "Calandre & Faisceau"}</Badge>}
+        </div>
+        {isExch ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <PressureCell label={`${t("designPressure")} — ${t("shellSide")}`} value={tp?.shell_design_bar} />
+            <PressureCell label={`${t("designPressure")} — ${t("tubeSide")}`} value={tp?.tube_design_bar} />
+            <PressureCell label={`${t("testPressure")} — ${t("shellSide")}`} value={tp?.shell_test_bar} accent />
+            <PressureCell label={`${t("testPressure")} — ${t("tubeSide")} / ${t("faciauxSide")}`} value={tp?.tube_test_bar} accent />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3">
+            <PressureCell label={t("designPressure")} value={tp?.design_bar} />
+            <PressureCell label={t("testPressure")} value={tp?.test_bar} accent />
+          </div>
+        )}
+        <div className="text-xs text-muted-foreground mt-3 border-t border-border pt-3">
+          {lang === "en"
+            ? "Test pressures derived per ASME VIII (1.43× MAWP design × 1.3 hydrotest)."
+            : "Pressions d'épreuve calculées selon ASME VIII (1.43× pression de calcul × 1.3 hydrotest)."}
+        </div>
+      </div>
+
+      {/* P&ID button */}
+      <div className="border border-border rounded-lg bg-card p-5">
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-2">
+            <FileText className="h-4 w-4 text-accent" />
+            <h3 className="font-display font-semibold">P&ID</h3>
+          </div>
+          {eq.pid_drive_id ? (
+            <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2">
+              <a href={`https://drive.google.com/file/d/${eq.pid_drive_id}/preview`} target="_blank" rel="noopener noreferrer">
+                <FileText className="h-4 w-4" /> {t("openPid")}
+                <ExternalLink className="h-3.5 w-3.5 ml-1" />
+              </a>
+            </Button>
+          ) : (
+            <Badge variant="outline" className="text-muted-foreground">{t("noPid")}</Badge>
+          )}
+        </div>
+      </div>
+
+      {/* Editable test dates */}
+      <TestDatesEditor tag={eq.tag} initialLast={eq.maintenance.last_tested} initialNext={eq.maintenance.next_test_due} />
+    </>
+  );
+}
+
+function PressureCell({ label, value, accent }: { label: string; value: number | null | undefined; accent?: boolean }) {
+  return (
+    <div className="border border-border rounded bg-secondary/40 p-3">
+      <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1.5 leading-tight">{label}</div>
+      <div className={`font-mono font-bold ${accent ? "text-accent text-xl" : "text-foreground text-lg"}`}>
+        {value != null ? `${value} bar` : "—"}
+      </div>
+    </div>
+  );
+}
+
+function TestDatesEditor({ tag, initialLast, initialNext }: { tag: string; initialLast: string; initialNext: string }) {
+  const { t, lang } = useI18n();
+  const [last, setLast] = useState<Date | undefined>(initialLast ? safeParse(initialLast) : undefined);
+  const [next, setNext] = useState<Date | undefined>(initialNext ? safeParse(initialNext) : undefined);
+  const [saving, setSaving] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      const { data } = await supabase
+        .from("equipment_test_dates")
+        .select("last_tested, next_test_due")
+        .eq("tag", tag)
+        .maybeSingle();
+      if (active && data) {
+        if (data.last_tested) setLast(parseISO(data.last_tested));
+        if (data.next_test_due) setNext(parseISO(data.next_test_due));
+      }
+      if (active) setLoaded(true);
+    })();
+    return () => { active = false; };
+  }, [tag]);
+
+  const save = async () => {
+    setSaving(true);
+    const { error } = await supabase.from("equipment_test_dates").upsert({
+      tag,
+      last_tested: last ? format(last, "yyyy-MM-dd") : null,
+      next_test_due: next ? format(next, "yyyy-MM-dd") : null,
+      updated_at: new Date().toISOString(),
+    });
+    setSaving(false);
+    if (error) {
+      toast({ title: lang === "en" ? "Save failed" : "Échec d'enregistrement", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: t("saved") });
+    }
+  };
+
+  return (
+    <div className="border border-border rounded-lg bg-card p-5">
+      <div className="flex items-center gap-2 mb-4">
+        <CalendarIcon className="h-4 w-4 text-accent" />
+        <h3 className="font-display font-semibold">{t("lastTested")} / {t("nextDue")}</h3>
+        {!loaded && <span className="text-xs text-muted-foreground ml-2">…</span>}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-3 items-end">
+        <DatePickerField label={t("lastTested")} date={last} onChange={setLast} />
+        <DatePickerField label={t("nextDue")} date={next} onChange={setNext} />
+        <Button onClick={save} disabled={saving} className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2 h-11">
+          <Save className="h-4 w-4" /> {saving ? "…" : t("saveDates")}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function DatePickerField({ label, date, onChange }: { label: string; date: Date | undefined; onChange: (d: Date | undefined) => void }) {
+  const { t } = useI18n();
+  return (
+    <div>
+      <div className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1.5">{label}</div>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline" className={cn("w-full justify-start text-left font-mono h-11", !date && "text-muted-foreground")}>
+            <CalendarIcon className="mr-2 h-4 w-4" />
+            {date ? format(date, "yyyy-MM-dd") : t("pickDate")}
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar mode="single" selected={date} onSelect={onChange} initialFocus className={cn("p-3 pointer-events-auto")} />
+        </PopoverContent>
+      </Popover>
+    </div>
+  );
+}
+
+function safeParse(s: string): Date | undefined {
+  try { return parseISO(s); } catch { return undefined; }
 }
 
 function Field({ label, value, mono, accent }: { label: string; value: string | number; mono?: boolean; accent?: boolean }) {
@@ -223,12 +373,12 @@ function PdrTab({ parts, tag }: { parts: SparePart[]; tag: string }) {
 }
 
 function ToolsTab({ boltSize, wrench, tools, liftingMethod, extraTools }: { boltSize: string; wrench: string | null; tools: string[]; liftingMethod: string; extraTools: string[] }) {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [copied, setCopied] = useState(false);
   const allTools = [...tools, ...extraTools];
 
   const copy = async () => {
-    await navigator.clipboard.writeText(allTools.map((t, i) => `${i + 1}. ${t}`).join("\n"));
+    await navigator.clipboard.writeText(allTools.map((tool, i) => `${i + 1}. ${tool}`).join("\n"));
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };
@@ -236,7 +386,7 @@ function ToolsTab({ boltSize, wrench, tools, liftingMethod, extraTools }: { bolt
   return (
     <div className="space-y-5">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <BigStat label={t("bolt")} value={boltSize} />
+        <BigStat label={`${t("bolt")} (${lang === "en" ? "default" : "défaut"})`} value={boltSize} />
         <BigStat label="Wrench / Clé" value={wrench ?? "—"} accent={!!wrench} />
         <BigStat label={t("liftingMethod")} value={liftingMethod.replace(/_/g, " ")} />
       </div>
