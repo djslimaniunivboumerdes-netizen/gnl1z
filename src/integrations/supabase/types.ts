@@ -14,7 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      equipment_test_dates: {
+        Row: {
+          last_tested: string | null
+          next_test_due: string | null
+          tag: string
+          updated_at: string
+        }
+        Insert: {
+          last_tested?: string | null
+          next_test_due?: string | null
+          tag: string
+          updated_at?: string
+        }
+        Update: {
+          last_tested?: string | null
+          next_test_due?: string | null
+          tag?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

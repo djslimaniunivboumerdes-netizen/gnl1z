@@ -11,6 +11,7 @@ import About from "./pages/About";
 import EquipmentList from "./pages/EquipmentList";
 import EquipmentDetail from "./pages/EquipmentDetail";
 import DcsDirectory from "./pages/DcsDirectory";
+import DcsDetail from "./pages/DcsDetail";
 import Manuals from "./pages/Manuals";
 import Author from "./pages/Author";
 import NotFound from "./pages/NotFound.tsx";
@@ -32,6 +33,7 @@ const App = () => (
                 <Route path="/equipment" element={<EquipmentList />} />
                 <Route path="/equipment/:tag" element={<EquipmentDetail />} />
                 <Route path="/dcs" element={<DcsDirectory />} />
+                <Route path="/dcs/:id" element={<DcsDetail />} />
                 <Route path="/manuals" element={<Manuals />} />
                 <Route path="/author" element={<Author />} />
                 <Route path="*" element={<NotFound />} />

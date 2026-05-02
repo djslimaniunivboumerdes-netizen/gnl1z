@@ -33,11 +33,24 @@ const BOLT_TO_WRENCH: Record<string, string> = {
   "1-1/2\"": "2-3/8\"",
 };
 
+// Default bolt sizes per equipment type (used when no recorded bolt on equipment).
+const DEFAULT_BOLT_BY_TYPE: Record<string, string> = {
+  E: "M20", // shell-and-tube exchangers — typical flange bolt
+  F: "M24", // columns / vessels
+  G: "M20", // separators / drums
+  P: "M16", // pumps
+  K: "M30", // compressors
+  R: "M20", // reactors
+};
+
+export function defaultBoltForType(typeCode: string): string {
+  return DEFAULT_BOLT_BY_TYPE[typeCode] ?? "M16";
+}
+
 export function predictWrench(boltSize: string): string | null {
   if (!boltSize) return null;
   const key = boltSize.trim();
   if (BOLT_TO_WRENCH[key]) return BOLT_TO_WRENCH[key];
-  // try normalize metric
   const metric = key.match(/^M\s*(\d+)$/i);
   if (metric) return BOLT_TO_WRENCH[`M${metric[1]}`] ?? null;
   return null;
