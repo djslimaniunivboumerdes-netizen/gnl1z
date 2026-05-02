@@ -1,8 +1,7 @@
-import equipmentMaster from "@/data/equipment_master.json";
 import gnl1zDb from "@/data/gnl1z_database.json";
 
 export interface SparePart {
-  code: string;
+  code: string | number;
   description: string;
   reference?: string;
   qty_installed: number;
@@ -19,6 +18,18 @@ export interface EquipmentType {
   name: string;
 }
 
+// Two shapes: shell-and-tube exchangers expose shell+tube; everything else exposes single design/test.
+export interface TestPressure {
+  // exchanger-specific (E type)
+  shell_design_bar?: number | null;
+  tube_design_bar?: number | null;
+  shell_test_bar?: number | null;
+  tube_test_bar?: number | null;
+  // generic
+  design_bar?: number | null;
+  test_bar?: number | null;
+}
+
 export interface Equipment {
   tag: string;
   name: string;
@@ -33,8 +44,8 @@ export interface Equipment {
     volume_m3: number;
     pressure_bar: number;
     serial_no: string;
-    bolt_size: string;
     temperature_c?: number;
+    test_pressure?: TestPressure;
   };
   maintenance: {
     lifting_method: string;
@@ -47,6 +58,7 @@ export interface Equipment {
     total_qty_installed: number;
     items?: SparePart[];
   };
+  pid_drive_id?: string | null;
   notes?: string;
 }
 
@@ -62,21 +74,8 @@ interface DbShape {
 }
 
 const DB = gnl1zDb as DbShape;
-const MASTER = equipmentMaster as Equipment[];
 
-// Merge: master gives summary list; full DB gives spare parts items.
-const partsByTag = new Map<string, SparePart[]>();
-for (const e of DB.equipment) {
-  if (e.spare_parts?.items) partsByTag.set(e.tag, e.spare_parts.items);
-}
-
-export const EQUIPMENT: Equipment[] = MASTER.map((e) => ({
-  ...e,
-  spare_parts: {
-    ...e.spare_parts,
-    items: partsByTag.get(e.tag) ?? [],
-  },
-}));
+export const EQUIPMENT: Equipment[] = DB.equipment;
 
 export const META = {
   project: DB.project,
@@ -94,4 +93,8 @@ export const SECTIONS = Array.from(new Set(EQUIPMENT.map((e) => e.section))).sor
 
 export function getEquipmentByTag(tag: string): Equipment | undefined {
   return EQUIPMENT.find((e) => e.tag === tag);
+}
+
+export function isShellAndTube(eq: Equipment): boolean {
+  return eq.type.code === "E";
 }
