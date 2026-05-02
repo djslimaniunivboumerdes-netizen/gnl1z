@@ -1,25 +1,27 @@
-import { useState } from "react";
-import { Cpu, Search } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import Fuse from "fuse.js";
+import { Cpu, Search, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useI18n } from "@/contexts/I18nContext";
-import { UNITS } from "@/data";
-
-// Placeholder DCS panel data — replace with real I/O list when available.
-const DCS_PANELS = UNITS.flatMap((unit, i) => [
-  { panel: `${unit}-PNL-01`, unit, type: "Process Control", io: 64 + (i * 8) % 96, location: `Control Room ${unit}` },
-  { panel: `${unit}-PNL-02`, unit, type: "Safety / ESD", io: 32 + (i * 4) % 32, location: `Field Aux Room ${unit}` },
-]);
+import { DCS_PANELS, DCS_SECTIONS, driveImageUrl } from "@/data/dcs_panels";
 
 export default function DcsDirectory() {
   const { t, lang } = useI18n();
   const [q, setQ] = useState("");
-  const list = DCS_PANELS.filter((p) =>
-    !q.trim() ||
-    p.panel.toLowerCase().includes(q.toLowerCase()) ||
-    p.unit.toLowerCase().includes(q.toLowerCase()) ||
-    p.type.toLowerCase().includes(q.toLowerCase())
-  );
+  const [section, setSection] = useState<string>("all");
+
+  const fuse = useMemo(() => new Fuse(DCS_PANELS, {
+    threshold: 0.35,
+    keys: ["title_en", "title_fr", "section", "unit", "related_tags"],
+  }), []);
+
+  const list = useMemo(() => {
+    let l = q.trim() ? fuse.search(q).map((r) => r.item) : DCS_PANELS;
+    if (section !== "all") l = l.filter((p) => p.section === section);
+    return l;
+  }, [q, section, fuse]);
 
   return (
     <div className="px-4 md:px-8 py-6 md:py-8 max-w-7xl mx-auto">
@@ -30,30 +32,71 @@ export default function DcsDirectory() {
       </div>
       <p className="text-sm text-muted-foreground mb-6 max-w-2xl">
         {lang === "en"
-          ? "Instrument-to-panel mapping. Placeholder data — connect your real I/O list when available."
-          : "Mapping instrument-vers-panneau. Données fictives — connectez votre liste I/O réelle dès que disponible."}
+          ? `${DCS_PANELS.length} DCS screen captures from the Sonatrach GNL1Z control room. Click any panel for details.`
+          : `${DCS_PANELS.length} captures DCS de la salle de contrôle GNL1Z Sonatrach. Cliquez sur un panneau pour les détails.`}
       </p>
 
-      <div className="relative mb-5 max-w-md">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-        <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder={t("search")} className="pl-9 h-11" />
+      <div className="flex flex-col md:flex-row gap-3 mb-5">
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder={t("search")} className="pl-9 h-11" />
+        </div>
+        <div className="flex gap-2 flex-wrap">
+          <button
+            onClick={() => setSection("all")}
+            className={`px-3 h-11 rounded border text-xs font-mono uppercase tracking-wider transition-colors ${
+              section === "all" ? "bg-accent text-accent-foreground border-accent" : "bg-card border-border hover:border-accent/50"
+            }`}
+          >
+            {lang === "en" ? "All" : "Tout"}
+          </button>
+          {DCS_SECTIONS.map((s) => (
+            <button
+              key={s}
+              onClick={() => setSection(s)}
+              className={`px-3 h-11 rounded border text-xs font-mono uppercase tracking-wider transition-colors ${
+                section === s ? "bg-accent text-accent-foreground border-accent" : "bg-card border-border hover:border-accent/50"
+              }`}
+            >
+              {s}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {list.map((p) => (
-          <div key={p.panel} className="border border-border rounded-lg bg-card p-5 hover:border-accent/50 transition-colors shadow-card">
-            <div className="flex items-center justify-between mb-2">
-              <div className="font-mono text-sm font-semibold text-accent">{p.panel}</div>
-              <Badge variant="outline" className="font-mono text-[10px]">{p.unit}</Badge>
+          <Link
+            key={p.id}
+            to={`/dcs/${p.id}`}
+            className="group relative overflow-hidden border border-border rounded-lg bg-card hover:border-accent/50 hover:shadow-industrial transition-all"
+          >
+            <div className="aspect-video bg-secondary/40 overflow-hidden border-b border-border">
+              <img
+                src={driveImageUrl(p.drive_id)}
+                alt={lang === "en" ? p.title_en : p.title_fr}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
             </div>
-            <div className="font-display font-medium">{p.type}</div>
-            <div className="text-xs text-muted-foreground mt-1">{p.location}</div>
-            <div className="mt-3 flex items-baseline gap-1">
-              <span className="text-2xl font-display font-bold text-accent">{p.io}</span>
-              <span className="text-xs text-muted-foreground uppercase tracking-widest">I/O</span>
+            <div className="p-4">
+              <div className="flex items-center justify-between mb-1.5">
+                <Badge variant="outline" className="font-mono text-[10px]">{p.section}</Badge>
+                {p.unit && <span className="font-mono text-[10px] text-muted-foreground">{p.unit}</span>}
+              </div>
+              <div className="flex items-start justify-between gap-2">
+                <div className="font-display font-semibold leading-tight">
+                  {lang === "en" ? p.title_en : p.title_fr}
+                </div>
+                <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-0.5 transition-all shrink-0 mt-0.5" />
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
+        {list.length === 0 && (
+          <div className="col-span-full text-center text-muted-foreground py-12">{t("noResults")}</div>
+        )}
       </div>
     </div>
   );
