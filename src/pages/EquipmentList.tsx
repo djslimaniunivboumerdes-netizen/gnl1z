@@ -43,7 +43,7 @@ export default function EquipmentList() {
     exportToCsv("gnl1z_equipment.csv", filtered.map((e) => ({
       tag: e.tag, name: e.name, type: e.type.name, unit: e.unit, section: e.section,
       status: e.testing_status, weight_kg: e.technical.weight_kg, pressure_bar: e.technical.pressure_bar,
-      volume_m3: e.technical.volume_m3, serial_no: e.technical.serial_no, bolt_size: e.technical.bolt_size,
+      volume_m3: e.technical.volume_m3, serial_no: e.technical.serial_no,
       parts_count: e.spare_parts.count, notes: e.notes ?? "",
     })));
   };
