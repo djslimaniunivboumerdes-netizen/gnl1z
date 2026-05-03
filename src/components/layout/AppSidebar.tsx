@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, Info, Database, Cpu, BookOpen, User, Factory } from "lucide-react";
+import { LayoutDashboard, Info, Database, Cpu, BookOpen, User } from "lucide-react";
+import sonatrachLogo from "@/assets/sonatrach-logo.png";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
   SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarHeader, useSidebar,
@@ -28,8 +29,8 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" className="border-r border-sidebar-border">
       <SidebarHeader className="p-4 border-b border-sidebar-border">
         <div className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded bg-gradient-accent grid place-items-center shadow-accent shrink-0">
-            <Factory className="h-5 w-5 text-accent-foreground" />
+          <div className="h-10 w-10 rounded bg-white grid place-items-center shadow-accent shrink-0 p-1">
+            <img src={sonatrachLogo} alt="Sonatrach" className="h-full w-full object-contain" />
           </div>
           {!collapsed && (
             <div className="min-w-0">
