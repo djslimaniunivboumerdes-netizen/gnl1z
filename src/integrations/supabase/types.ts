@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      dcs_detected_instruments: {
+        Row: {
+          detected_at: string
+          model: string | null
+          panel_id: string
+          tags: Json
+        }
+        Insert: {
+          detected_at?: string
+          model?: string | null
+          panel_id: string
+          tags?: Json
+        }
+        Update: {
+          detected_at?: string
+          model?: string | null
+          panel_id?: string
+          tags?: Json
+        }
+        Relationships: []
+      }
       equipment_test_dates: {
         Row: {
           last_tested: string | null

@@ -1,22 +1,23 @@
 // Industrial engineering helpers: bolt→wrench, shackle sizing, insulation rules, CSV export.
 
-// Standard bolt → hex wrench across-flats lookup (UNC + metric).
+// Standard bolt → hex wrench across-flats lookup (imperial inches preferred).
+// Metric bolt sizes are mapped to the closest equivalent inch wrench.
 const BOLT_TO_WRENCH: Record<string, string> = {
-  "M8": "13 mm",
-  "M10": "17 mm",
-  "M12": "19 mm",
-  "M14": "22 mm",
-  "M16": "24 mm",
-  "M18": "27 mm",
-  "M20": "30 mm",
-  "M22": "32 mm",
-  "M24": "36 mm",
-  "M27": "41 mm",
-  "M30": "46 mm",
-  "M33": "50 mm",
-  "M36": "55 mm",
-  "M42": "65 mm",
-  "M48": "75 mm",
+  "M8": "1/2\"",
+  "M10": "11/16\"",
+  "M12": "3/4\"",
+  "M14": "7/8\"",
+  "M16": "15/16\"",
+  "M18": "1-1/16\"",
+  "M20": "1-3/16\"",
+  "M22": "1-1/4\"",
+  "M24": "1-7/16\"",
+  "M27": "1-5/8\"",
+  "M30": "1-13/16\"",
+  "M33": "2\"",
+  "M36": "2-3/16\"",
+  "M42": "2-9/16\"",
+  "M48": "2-15/16\"",
   "1/4\"": "7/16\"",
   "5/16\"": "1/2\"",
   "3/8\"": "9/16\"",
@@ -60,12 +61,12 @@ export function predictToolKit(boltSize: string): string[] {
   const wrench = predictWrench(boltSize);
   const tools: string[] = [];
   if (wrench) {
-    tools.push(`Hex wrench / Clé plate ${wrench}`);
-    tools.push(`Impact socket / Douille à choc ${wrench}`);
+    tools.push(`Combination wrench / Clé mixte ${wrench}`);
+    tools.push(`Impact socket 1/2" drive / Douille à choc ${wrench}`);
     tools.push(`Torque wrench / Clé dynamométrique ${wrench}`);
   }
-  tools.push("Joint scraper / Racloir de joint");
-  tools.push("Anti-seize compound / Pâte anti-grippage");
+  tools.push(`Joint scraper / Racloir de joint`);
+  tools.push(`Anti-seize compound / Pâte anti-grippage`);
   return tools;
 }
 

@@ -5,16 +5,20 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useI18n } from "@/contexts/I18nContext";
 import { Badge } from "@/components/ui/badge";
 import { META } from "@/data";
+import sonatrachLogo from "@/assets/sonatrach-logo.png";
 
 export function AppHeader() {
   const { theme, toggle } = useTheme();
   const { lang, toggle: toggleLang } = useI18n();
 
   return (
-    <header className="h-14 border-b border-border bg-card/60 backdrop-blur-md sticky top-0 z-30 flex items-center px-3 md:px-5 gap-3">
+    <header className="h-14 border-b-2 border-accent/30 bg-card/80 backdrop-blur-md sticky top-0 z-30 flex items-center px-3 md:px-5 gap-3">
       <SidebarTrigger className="text-foreground hover:text-accent" />
-      <div className="hidden md:flex items-center gap-2 min-w-0">
-        <span className="text-xs uppercase tracking-widest text-muted-foreground">{META.project}</span>
+      <img src={sonatrachLogo} alt="Sonatrach" className="h-8 w-auto md:hidden" />
+      <div className="hidden md:flex items-center gap-3 min-w-0">
+        <img src={sonatrachLogo} alt="Sonatrach" className="h-9 w-auto" />
+        <div className="h-6 w-px bg-border" />
+        <span className="text-xs uppercase tracking-widest text-muted-foreground font-mono">{META.project}</span>
         <span className="text-muted-foreground/40">·</span>
         <span className="text-xs text-muted-foreground truncate">{META.location}</span>
       </div>

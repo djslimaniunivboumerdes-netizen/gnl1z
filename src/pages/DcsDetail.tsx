@@ -1,17 +1,57 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Cpu, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, Cpu, ExternalLink, Sparkles, RefreshCw, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useI18n } from "@/contexts/I18nContext";
 import { getDcsPanel, driveImageUrl, driveViewUrl } from "@/data/dcs_panels";
 import { getEquipmentByTag } from "@/data";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 import NotFound from "./NotFound";
 
 export default function DcsDetail() {
   const { id = "" } = useParams();
   const { t, lang } = useI18n();
   const panel = getDcsPanel(id);
+
+  const [tags, setTags] = useState<string[] | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!panel) return;
+    let active = true;
+    (async () => {
+      const { data } = await supabase
+        .from("dcs_detected_instruments")
+        .select("tags")
+        .eq("panel_id", panel.id)
+        .maybeSingle();
+      if (active) setTags(Array.isArray(data?.tags) ? (data!.tags as string[]) : []);
+    })();
+    return () => { active = false; };
+  }, [panel]);
+
   if (!panel) return <NotFound />;
+
+  const detect = async (force = false) => {
+    setLoading(true);
+    const { data, error } = await supabase.functions.invoke("detect-dcs-instruments", {
+      body: { panel_id: panel.id, image_url: driveImageUrl(panel.drive_id), force },
+    });
+    setLoading(false);
+    if (error) {
+      toast({ title: lang === "en" ? "Detection failed" : "Échec de détection", description: error.message, variant: "destructive" });
+      return;
+    }
+    if ((data as { error?: string })?.error) {
+      toast({ title: lang === "en" ? "Detection failed" : "Échec de détection", description: (data as { error: string }).error, variant: "destructive" });
+      return;
+    }
+    const t = (data as { tags?: string[] }).tags ?? [];
+    setTags(t);
+    toast({ title: lang === "en" ? `Found ${t.length} instrument tag(s)` : `${t.length} tag(s) détecté(s)` });
+  };
 
   const related = (panel.related_tags ?? [])
     .map((tag) => getEquipmentByTag(tag))
@@ -64,7 +104,48 @@ export default function DcsDetail() {
         </div>
       </div>
 
-      <div className="border border-border rounded-lg bg-card p-5">
+      <div className="border border-border rounded-lg bg-card p-5 mb-6">
+        <div className="flex items-center justify-between gap-3 flex-wrap mb-3">
+          <div className="flex items-center gap-2">
+            <Tag className="h-4 w-4 text-accent" />
+            <h2 className="font-display font-semibold text-sm uppercase tracking-wider">
+              {lang === "en" ? "Detected Instrument Tags" : "Tags d'instruments détectés"}
+            </h2>
+            {tags && <Badge variant="outline" className="font-mono">{tags.length}</Badge>}
+          </div>
+          <div className="flex gap-2">
+            {(!tags || tags.length === 0) && (
+              <Button onClick={() => detect(false)} disabled={loading} size="sm" className="bg-accent hover:bg-accent/90 text-accent-foreground gap-2">
+                <Sparkles className="h-4 w-4" /> {loading ? "…" : (lang === "en" ? "Detect with AI" : "Détecter avec IA")}
+              </Button>
+            )}
+            {tags && tags.length > 0 && (
+              <Button onClick={() => detect(true)} disabled={loading} size="sm" variant="outline" className="gap-2">
+                <RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`} /> {lang === "en" ? "Re-scan" : "Re-scanner"}
+              </Button>
+            )}
+          </div>
+        </div>
+        {tags === null ? (
+          <p className="text-sm text-muted-foreground">…</p>
+        ) : tags.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            {lang === "en"
+              ? "No tags detected yet. Click 'Detect with AI' to scan this DCS screen with vision AI."
+              : "Aucun tag détecté. Cliquez 'Détecter avec IA' pour scanner cet écran DCS."}
+          </p>
+        ) : (
+          <div className="flex flex-wrap gap-1.5">
+            {tags.map((tg) => (
+              <span key={tg} className="px-2 py-1 rounded border border-accent/30 bg-accent/10 text-accent font-mono text-xs">
+                {tg}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="border border-border rounded-lg bg-card p-5 mb-6">
         <h2 className="font-display font-semibold mb-3 text-sm uppercase tracking-wider text-muted-foreground">
           {t("related")}
         </h2>
@@ -90,6 +171,10 @@ export default function DcsDetail() {
           </div>
         )}
       </div>
+
+      <Button asChild variant="ghost" size="sm">
+        <Link to="/dcs"><ArrowLeft className="h-4 w-4 mr-1" /> {t("back")}</Link>
+      </Button>
     </div>
   );
 }
