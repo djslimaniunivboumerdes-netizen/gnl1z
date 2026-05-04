@@ -13,6 +13,7 @@ import EquipmentDetail from "./pages/EquipmentDetail";
 import DcsDirectory from "./pages/DcsDirectory";
 import DcsDetail from "./pages/DcsDetail";
 import Manuals from "./pages/Manuals";
+import ProcessFlow from "./pages/ProcessFlow";
 import Author from "./pages/Author";
 import NotFound from "./pages/NotFound.tsx";
 
