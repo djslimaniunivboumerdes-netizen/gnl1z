@@ -146,11 +146,21 @@ export default function DcsDetail() {
           </p>
         ) : (
           <div className="flex flex-wrap gap-1.5">
-            {tags.map((tg) => (
-              <span key={tg} className="px-2 py-1 rounded border border-accent/30 bg-accent/10 text-accent font-mono text-xs">
-                {tg}
-              </span>
-            ))}
+            {tags.map((tg) => {
+              const isHi = highlightTag && tg.toUpperCase() === highlightTag;
+              return (
+                <span
+                  key={tg}
+                  className={`px-2 py-1 rounded border font-mono text-xs ${
+                    isHi
+                      ? "border-accent bg-accent text-accent-foreground ring-2 ring-accent/40 animate-pulse"
+                      : "border-accent/30 bg-accent/10 text-accent"
+                  }`}
+                >
+                  {tg}
+                </span>
+              );
+            })}
           </div>
         )}
       </div>
