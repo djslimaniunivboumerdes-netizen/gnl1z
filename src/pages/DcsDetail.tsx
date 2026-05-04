@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Cpu, ExternalLink, Sparkles, RefreshCw, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useI18n } from "@/contexts/I18nContext";
 import { getDcsPanel, driveImageUrl, driveViewUrl } from "@/data/dcs_panels";
 import { getEquipmentByTag } from "@/data";
+import { getTagsForPanel } from "@/data/dcs_tags";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import NotFound from "./NotFound";
 
 export default function DcsDetail() {
   const { id = "" } = useParams();
+  const [searchParams] = useSearchParams();
+  const highlightTag = searchParams.get("tag")?.toUpperCase() ?? null;
   const { t, lang } = useI18n();
   const panel = getDcsPanel(id);
 
@@ -21,13 +24,20 @@ export default function DcsDetail() {
   useEffect(() => {
     if (!panel) return;
     let active = true;
+    // Seed from pre-scanned cache so users see results without running AI
+    const cached = getTagsForPanel(panel.id);
+    if (cached.length) setTags(cached);
     (async () => {
       const { data } = await supabase
         .from("dcs_detected_instruments")
         .select("tags")
         .eq("panel_id", panel.id)
         .maybeSingle();
-      if (active) setTags(Array.isArray(data?.tags) ? (data!.tags as string[]) : []);
+      if (active && Array.isArray(data?.tags) && (data!.tags as string[]).length) {
+        setTags(data!.tags as string[]);
+      } else if (active && !cached.length) {
+        setTags([]);
+      }
     })();
     return () => { active = false; };
   }, [panel]);
@@ -136,11 +146,21 @@ export default function DcsDetail() {
           </p>
         ) : (
           <div className="flex flex-wrap gap-1.5">
-            {tags.map((tg) => (
-              <span key={tg} className="px-2 py-1 rounded border border-accent/30 bg-accent/10 text-accent font-mono text-xs">
-                {tg}
-              </span>
-            ))}
+            {tags.map((tg) => {
+              const isHi = highlightTag && tg.toUpperCase() === highlightTag;
+              return (
+                <span
+                  key={tg}
+                  className={`px-2 py-1 rounded border font-mono text-xs ${
+                    isHi
+                      ? "border-accent bg-accent text-accent-foreground ring-2 ring-accent/40 animate-pulse"
+                      : "border-accent/30 bg-accent/10 text-accent"
+                  }`}
+                >
+                  {tg}
+                </span>
+              );
+            })}
           </div>
         )}
       </div>
