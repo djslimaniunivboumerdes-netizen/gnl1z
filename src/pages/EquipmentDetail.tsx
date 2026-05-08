@@ -33,6 +33,7 @@ export default function EquipmentDetail() {
   const shackle = suggestShackle(eq.technical.weight_kg);
   const safety = safetyLoadKg(eq.technical.weight_kg);
   const insulation = insulationRecommendation(eq.type.code, eq.technical.temperature_c);
+  const crane = recommendCrane(eq.technical.weight_kg);
 
   return (
     <div className="px-4 md:px-8 py-6 md:py-8 max-w-7xl mx-auto">
