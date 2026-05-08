@@ -12,7 +12,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { getEquipmentByTag, isShellAndTube, type SparePart, type Equipment } from "@/data";
 import {
   predictWrench, predictToolKit, suggestShackle, safetyLoadKg,
-  insulationRecommendation, exportToCsv, defaultBoltForType,
+  insulationRecommendation, exportToCsv, defaultBoltForType, recommendCrane,
 } from "@/lib/industrial";
 import { useI18n } from "@/contexts/I18nContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -33,6 +33,7 @@ export default function EquipmentDetail() {
   const shackle = suggestShackle(eq.technical.weight_kg);
   const safety = safetyLoadKg(eq.technical.weight_kg);
   const insulation = insulationRecommendation(eq.type.code, eq.technical.temperature_c);
+  const crane = recommendCrane(eq.technical.weight_kg);
 
   return (
     <div className="px-4 md:px-8 py-6 md:py-8 max-w-7xl mx-auto">
@@ -106,6 +107,33 @@ export default function EquipmentDetail() {
               </div>
             ) : (
               <EmptyState message="No mass recorded — shackle cannot be sized." />
+            )}
+          </div>
+
+          <div className="mt-5 border border-border rounded-lg bg-card p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Wrench className="h-4 w-4 text-accent" />
+              <h3 className="font-display font-semibold">Crane recommendation / Grue recommandée</h3>
+            </div>
+            {crane ? (
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Capacity</div>
+                  <div className="text-2xl font-display font-bold text-accent">{crane.capacity_t}{crane.capacity_t >= 100 ? "+" : ""} T</div>
+                </div>
+                <div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Type</div>
+                  <div className="text-base font-display font-semibold">{crane.label}</div>
+                </div>
+                <div className="col-span-2 text-xs text-muted-foreground border-t border-border pt-3">
+                  {crane.rationale}
+                </div>
+                <div className="col-span-2 text-[11px] text-muted-foreground font-mono">
+                  GNL1Z fleet: 12 T · 24 T · 35 T · 54 T · 74 T · 100+ T
+                </div>
+              </div>
+            ) : (
+              <EmptyState message="No mass recorded — crane cannot be sized." />
             )}
           </div>
         </TabsContent>
