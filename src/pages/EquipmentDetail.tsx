@@ -12,7 +12,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { getEquipmentByTag, isShellAndTube, type SparePart, type Equipment } from "@/data";
 import {
   predictWrench, predictToolKit, suggestShackle, safetyLoadKg,
-  insulationRecommendation, exportToCsv, defaultBoltForType,
+  insulationRecommendation, exportToCsv, defaultBoltForType, recommendCrane,
 } from "@/lib/industrial";
 import { useI18n } from "@/contexts/I18nContext";
 import { supabase } from "@/integrations/supabase/client";
