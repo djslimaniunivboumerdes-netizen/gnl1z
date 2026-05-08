@@ -34,18 +34,32 @@ const BOLT_TO_WRENCH: Record<string, string> = {
   "1-1/2\"": "2-3/8\"",
 };
 
-// Default bolt sizes per equipment type (used when no recorded bolt on equipment).
+// Default bolt sizes per equipment type (imperial inches per Sonatrach GNL1Z standard).
 const DEFAULT_BOLT_BY_TYPE: Record<string, string> = {
-  E: "M20", // shell-and-tube exchangers — typical flange bolt
-  F: "M24", // columns / vessels
-  G: "M20", // separators / drums
-  P: "M16", // pumps
-  K: "M30", // compressors
-  R: "M20", // reactors
+  E: '3/4"',     // shell-and-tube exchangers — typical flange bolt
+  F: '7/8"',     // columns / vessels
+  G: '3/4"',     // separators / drums
+  P: '5/8"',     // pumps
+  K: '1-1/8"',   // compressors
+  R: '3/4"',     // reactors
+};
+
+// Common companion bolt sizes typically encountered around a primary flange size
+// (manway, drain, vent, instrument tappings, gasket retainers).
+const COMPANION_BOLTS: Record<string, string[]> = {
+  '1/2"':    ['3/8"', '1/2"', '5/8"'],
+  '5/8"':    ['1/2"', '5/8"', '3/4"'],
+  '3/4"':    ['1/2"', '5/8"', '3/4"', '7/8"'],
+  '7/8"':    ['5/8"', '3/4"', '7/8"', '1"'],
+  '1"':      ['3/4"', '7/8"', '1"', '1-1/8"'],
+  '1-1/8"':  ['3/4"', '7/8"', '1"', '1-1/8"', '1-1/4"'],
+  '1-1/4"':  ['7/8"', '1"', '1-1/8"', '1-1/4"', '1-3/8"'],
+  '1-3/8"':  ['1"', '1-1/8"', '1-1/4"', '1-3/8"', '1-1/2"'],
+  '1-1/2"':  ['1"', '1-1/4"', '1-3/8"', '1-1/2"'],
 };
 
 export function defaultBoltForType(typeCode: string): string {
-  return DEFAULT_BOLT_BY_TYPE[typeCode] ?? "M16";
+  return DEFAULT_BOLT_BY_TYPE[typeCode] ?? '5/8"';
 }
 
 export function predictWrench(boltSize: string): string | null {
@@ -57,17 +71,66 @@ export function predictWrench(boltSize: string): string | null {
   return null;
 }
 
+export function companionBolts(boltSize: string): string[] {
+  return COMPANION_BOLTS[boltSize.trim()] ?? [boltSize];
+}
+
 export function predictToolKit(boltSize: string): string[] {
-  const wrench = predictWrench(boltSize);
   const tools: string[] = [];
-  if (wrench) {
-    tools.push(`Combination wrench / Clé mixte ${wrench}`);
-    tools.push(`Impact socket 1/2" drive / Douille à choc ${wrench}`);
-    tools.push(`Torque wrench / Clé dynamométrique ${wrench}`);
+  const bolts = companionBolts(boltSize);
+  const wrenches = Array.from(new Set(bolts.map((b) => predictWrench(b)).filter(Boolean) as string[]));
+
+  // One combination wrench per companion bolt size
+  wrenches.forEach((w) => {
+    tools.push(`Combination wrench / Clé mixte ${w}`);
+  });
+  // Impact sockets (1/2" drive for ≤ 1", 3/4" drive for larger)
+  wrenches.forEach((w) => {
+    const drive = /^(1-|2)/.test(w) ? '3/4"' : '1/2"';
+    tools.push(`Impact socket ${drive} drive / Douille à choc ${w}`);
+  });
+  // Torque wrench — pick the largest size encountered
+  if (wrenches.length) {
+    tools.push(`Torque wrench / Clé dynamométrique ${wrenches[wrenches.length - 1]}`);
   }
-  tools.push(`Joint scraper / Racloir de joint`);
-  tools.push(`Anti-seize compound / Pâte anti-grippage`);
+  // Stud / nut handling
+  tools.push(`Stud bolt extractor / Extracteur de goujons`);
+  tools.push(`Flange spreader / Écarteur de brides`);
+  // Gasket service
+  tools.push(`Spiral-wound gasket set (CS/SS, graphite filler) / Jeu de joints spiralés`);
+  tools.push(`Gasket / joint scraper / Racloir de joint`);
+  tools.push(`Wire brush (SS) / Brosse métallique inox`);
+  tools.push(`Anti-seize compound (Cu / Ni grade) / Pâte anti-grippage`);
+  tools.push(`Calibrated torque chart / Tableau de couples calibrés`);
   return tools;
+}
+
+// Crane recommendation per Sonatrach GNL1Z fleet (12 / 24 / 35 / 54 / 74 / 100+ T)
+export interface CraneRec {
+  capacity_t: number;
+  label: string;
+  rationale: string;
+}
+const CRANE_FLEET: number[] = [12, 24, 35, 54, 74, 100];
+
+export function recommendCrane(massKg: number): CraneRec | null {
+  if (!massKg || massKg <= 0) return null;
+  const liftT = (massKg * 1.5) / 1000; // 1.5× safety factor on hook load
+  // Working at ~70% of crane chart to allow boom radius / rigging weight
+  const required = liftT / 0.7;
+  const pick = CRANE_FLEET.find((c) => c >= required);
+  if (!pick) {
+    return {
+      capacity_t: 100,
+      label: '100+ Tonne mobile crane / Grue mobile 100+ T',
+      rationale: `Hook load ${liftT.toFixed(1)} t (1.5× SF) exceeds 74 T at 70% chart utilisation — use 100+ T crawler/all-terrain.`,
+    };
+  }
+  return {
+    capacity_t: pick,
+    label: `${pick} Tonne mobile crane / Grue mobile ${pick} T`,
+    rationale: `Hook load ${liftT.toFixed(1)} t (mass × 1.5 SF) within ${pick} T crane chart at 70% utilisation (~${(pick * 0.7).toFixed(1)} t available).`,
+  };
 }
 
 // Suggested shackle (Crosby G-209 working load limits, tons)
