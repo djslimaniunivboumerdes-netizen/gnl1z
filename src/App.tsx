@@ -14,6 +14,7 @@ import DcsDirectory from "./pages/DcsDirectory";
 import DcsDetail from "./pages/DcsDetail";
 import Manuals from "./pages/Manuals";
 import ProcessFlow from "./pages/ProcessFlow";
+import News from "./pages/News";
 import Author from "./pages/Author";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -37,6 +38,7 @@ const App = () => (
                 <Route path="/dcs/:id" element={<DcsDetail />} />
                 <Route path="/manuals" element={<Manuals />} />
                 <Route path="/flow" element={<ProcessFlow />} />
+                <Route path="/news" element={<News />} />
                 <Route path="/author" element={<Author />} />
                 <Route path="*" element={<NotFound />} />
               </Route>

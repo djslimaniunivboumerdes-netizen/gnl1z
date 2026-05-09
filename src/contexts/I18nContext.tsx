@@ -12,6 +12,7 @@ const DICT: Dict = {
   equipment: { en: "Equipment Master", fr: "Maître Équipements" },
   dcs: { en: "DCS Directory", fr: "Répertoire DCS" },
   manuals: { en: "Operational Manuals", fr: "Manuels Opérationnels" },
+  news: { en: "News & Markets", fr: "Actualités & Marchés" },
   author: { en: "Author Profile", fr: "Profil Auteur" },
   search: { en: "Search...", fr: "Rechercher..." },
   searchEquipment: { en: "Search by tag, name, serial, unit...", fr: "Rechercher par tag, nom, série, unité..." },

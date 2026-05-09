@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, Info, Database, Cpu, BookOpen, User, Workflow } from "lucide-react";
+import { LayoutDashboard, Info, Database, Cpu, BookOpen, User, Workflow, Newspaper } from "lucide-react";
 import sonatrachLogo from "@/assets/sonatrach-logo.png";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
@@ -19,6 +19,7 @@ export function AppSidebar() {
     { title: t("equipment"), url: "/equipment", icon: Database },
     { title: t("dcs"), url: "/dcs", icon: Cpu },
     { title: "Process Flow", url: "/flow", icon: Workflow },
+    { title: t("news"), url: "/news", icon: Newspaper },
     { title: t("manuals"), url: "/manuals", icon: BookOpen },
     { title: t("author"), url: "/author", icon: User },
   ];
