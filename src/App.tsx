@@ -14,6 +14,7 @@ import DcsDirectory from "./pages/DcsDirectory";
 import DcsDetail from "./pages/DcsDetail";
 import Manuals from "./pages/Manuals";
 import ProcessFlow from "./pages/ProcessFlow";
+import News from "./pages/News";
 import Author from "./pages/Author";
 import NotFound from "./pages/NotFound.tsx";
 
