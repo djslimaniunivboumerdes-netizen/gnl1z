@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, Info, Database, Cpu, BookOpen, User, Workflow } from "lucide-react";
+import { LayoutDashboard, Info, Database, Cpu, BookOpen, User, Workflow, Newspaper } from "lucide-react";
 import sonatrachLogo from "@/assets/sonatrach-logo.png";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel,
