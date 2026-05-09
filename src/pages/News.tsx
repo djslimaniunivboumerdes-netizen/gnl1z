@@ -328,135 +328,18 @@ function Countdown({ target, lang }: { target: number; lang: string }) {
   return <span className="text-[10px] text-white/30 font-mono">{lang === "en" ? "auto-refresh in" : "refresh dans"} {m}:{String(s).padStart(2, "0")}</span>;
 }
 
-// ─── Prompt ───────────────────────────────────────────────────────────────────
-
-function buildPrompt(): string {
-  const now = new Date();
-  const dateStr = now.toLocaleDateString("en-GB", { day: "2-digit", month: "long", year: "numeric" });
-  const yr = now.getFullYear();
-  return `You are a real-time energy-market intelligence assistant for the GNL1Z LNG plant (Sonatrach, Arzew, Algeria).
-Today: ${dateStr}. Use real current data from web search — never hallucinate prices or headlines.
-
-SEARCH QUERIES TO RUN IN ORDER:
-1. "LNG spot price JKM TTF NBP Henry Hub ${yr}"
-2. "LNG market news ${dateStr}"
-3. "global LNG trade statistics ${yr}"
-4. "Sonatrach news ${dateStr}"
-5. "Sonatrach LNG export contract ${yr}"
-6. "Brent crude oil price today"
-7. "Saharan Blend crude Algeria ${yr}"
-8. "Algeria LNG export statistics ${yr}"
-
-Return ONLY a valid JSON object — no markdown, no preamble.
-
-{
-  "lng_prices": [
-    { "label": "JKM Spot",  "value": "XX.XX", "unit": "$/MMBtu", "trend": "up|down|flat", "change": "+X.XX (+X%)", "note": "Asia Pacific benchmark" },
-    { "label": "TTF Gas",   "value": "XX.XX", "unit": "EUR/MWh", "trend": "up|down|flat", "change": "...", "note": "European hub" },
-    { "label": "NBP",       "value": "XXX",   "unit": "p/therm", "trend": "up|down|flat", "change": "...", "note": "UK benchmark" },
-    { "label": "Henry Hub", "value": "X.XX",  "unit": "$/MMBtu", "trend": "up|down|flat", "change": "...", "note": "US reference" }
-  ],
-  "lng_stats": [
-    { "label": "Global LNG trade",      "value": "XXX", "unit": "MT/yr",    "trend": "up|down|flat" },
-    { "label": "Liquefaction capacity", "value": "XXX", "unit": "MTPA",     "trend": "up|down|flat" },
-    { "label": "Active FID projects",   "value": "XX",  "unit": "projects", "trend": "up|down|flat" },
-    { "label": "Top LNG exporter",      "value": "...", "unit": "" },
-    { "label": "Top LNG importer",      "value": "...", "unit": "" },
-    { "label": "Spot cargo share",      "value": "XX",  "unit": "% of trade", "trend": "up|down|flat" }
-  ],
-  "lng_news": [
-    { "title": "...", "title_fr": "...", "summary": "2-3 sentences EN with figures.", "summary_fr": "2-3 phrases FR avec chiffres.", "date": "DD Mon ${yr}", "source": "Reuters|Bloomberg|Argus|Platts|S&P Global|LNG World News", "url": "https://... or #", "category": "price|market|policy|supply|contract" }
-  ],
-  "sonatrach_prices": [
-    { "label": "Brent",              "value": "XXX.XX", "unit": "$/bbl",   "trend": "up|down|flat", "change": "...", "note": "ICE front-month" },
-    { "label": "Saharan Blend",      "value": "XXX.XX", "unit": "$/bbl",   "trend": "up|down|flat", "change": "...", "note": "Algeria crude" },
-    { "label": "Algeria LNG export", "value": "XX.XX",  "unit": "$/MMBtu", "trend": "up|down|flat", "change": "...", "note": "avg est." },
-    { "label": "DZD / USD",          "value": "XXX.X",  "unit": "DZD",     "trend": "up|down|flat", "change": "...", "note": "FX rate" }
-  ],
-  "sonatrach_stats": [
-    { "label": "LNG exports",              "value": "XX.X", "unit": "MTPA",    "trend": "up|down|flat" },
-    { "label": "Hydrocarbon revenues",     "value": "XX",   "unit": "USD bn",  "trend": "up|down|flat" },
-    { "label": "Gas production",           "value": "XXX",  "unit": "Bcm/yr",  "trend": "up|down|flat" },
-    { "label": "LNG trains (Arzew+Skikda)","value": "XX",   "unit": "trains" },
-    { "label": "Pipeline gas exports",     "value": "XX",   "unit": "Bcm/yr",  "trend": "up|down|flat" },
-    { "label": "Algeria world LNG rank",   "value": "...",  "unit": "" }
-  ],
-  "sonatrach_news": [
-    { "title": "...", "title_fr": "...", "summary": "...", "summary_fr": "...", "date": "DD Mon ${yr}", "source": "...", "url": "https://... or #", "category": "contract|production|investment|partnership|policy|market" }
-  ],
-  "fetched_at": "${now.toISOString()}"
-}
-
-RULES:
-1. lng_news MUST contain EXACTLY 10 items.
-2. sonatrach_news MUST contain EXACTLY 10 items.
-3. Use real articles found by web search. Never invent headlines.
-4. title_fr and summary_fr are MANDATORY for every item.
-5. If a price cannot be found, write "N/A".
-6. Return ONLY the JSON object.`;
-}
-
-// ─── Multi-turn API fetch ─────────────────────────────────────────────────────
-
-const API_URL   = "https://api.anthropic.com/v1/messages";
-const MAX_TURNS = 8;
+// ─── Edge function fetch ──────────────────────────────────────────────────────
 
 async function fetchWithSearch(signal: AbortSignal): Promise<NewsData> {
-  type Block   = { type: string; id?: string; text?: string };
-  type Msg     = { role: "user"|"assistant"; content: Block[]|string };
-
-  const messages: Msg[] = [{
-    role: "user",
-    content: "Search the web now and return the JSON as specified in your instructions. Run all 8 search queries. Return ONLY valid JSON — no markdown fences.",
-  }];
-
-  for (let turn = 0; turn < MAX_TURNS; turn++) {
-    const res = await fetch(API_URL, {
-      method:  "POST",
-      signal,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model:      "claude-sonnet-4-20250514",
-        max_tokens: 8000,
-        system:     buildPrompt(),
-        tools:      [{ type: "web_search_20250305", name: "web_search" }],
-        messages,
-      }),
-    });
-
-    if (!res.ok) {
-      const body = await res.text().catch(() => "");
-      throw new Error(`API ${res.status}: ${body.slice(0, 300)}`);
-    }
-
-    const raw     = await res.json();
-    const content: Block[] = raw.content ?? [];
-    const stop: string     = raw.stop_reason ?? "end_turn";
-
-    if (stop === "end_turn" || stop === "max_tokens") {
-      const text  = content.filter((b) => b.type === "text").map((b) => b.text ?? "").join("\n");
-      const clean = text.replace(/```json\s*/gi, "").replace(/```/g, "").trim();
-      const s     = clean.indexOf("{"); const e = clean.lastIndexOf("}");
-      if (s === -1 || e === -1 || s > e) throw new Error("No JSON in response. Preview: " + clean.slice(0, 300));
-      const parsed: NewsData = JSON.parse(clean.slice(s, e + 1));
-      for (const k of ["lng_news","sonatrach_news","lng_prices","sonatrach_prices","lng_stats","sonatrach_stats"] as const) {
-        if (!Array.isArray(parsed[k])) parsed[k] = [] as never;
-      }
-      return parsed;
-    }
-
-    if (stop === "tool_use") {
-      messages.push({ role: "assistant", content });
-      const results = content.filter((b) => b.type === "tool_use" && b.id).map((b) => ({
-        type: "tool_result" as const, tool_use_id: b.id!, content: "Search executed.",
-      }));
-      if (!results.length) break;
-      messages.push({ role: "user", content: results as unknown as Block[] });
-      continue;
-    }
-    break;
+  const { data, error } = await supabase.functions.invoke("news-feed", { body: {} });
+  if (signal.aborted) throw new DOMException("Aborted", "AbortError");
+  if (error) throw new Error(error.message || "Edge function failed");
+  if (!data || data.error) throw new Error(data?.error || "Empty response");
+  const parsed = data as NewsData;
+  for (const k of ["lng_news","sonatrach_news","lng_prices","sonatrach_prices","lng_stats","sonatrach_stats"] as const) {
+    if (!Array.isArray(parsed[k])) parsed[k] = [] as never;
   }
-  throw new Error("Max conversation turns reached without a complete JSON response.");
+  return parsed;
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
