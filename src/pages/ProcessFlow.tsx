@@ -22,16 +22,19 @@ interface Node {
   specs: { label: string; value: string }[];
 }
 
+// GNL1Z plant colour code (per Sonatrach legend on the general process map):
+//   Green G8/G12 = LNG / natural gas service · Purple = N₂ / instrument air
+//   Blue G1 = cooling water · Yellow GN = natural gas inlet · Red = fuel/turbine
 const CAT: Record<Category, { en: string; fr: string; color: string }> = {
-  absorber:   { en: "Absorber",       fr: "Absorbeur",      color: "#3b82f6" },
-  exchanger:  { en: "Heat Exchanger", fr: "Échangeur",      color: "#06b6d4" },
-  compressor: { en: "Compressor",     fr: "Compresseur",    color: "#a855f7" },
-  column:     { en: "Column",         fr: "Colonne",        color: "#10b981" },
-  drum:       { en: "Drum / Vessel",  fr: "Capacité",       color: "#eab308" },
-  turbine:    { en: "Gas Turbine",    fr: "Turbine",        color: "#ef4444" },
-  pump:       { en: "Pump",           fr: "Pompe",          color: "#ec4899" },
-  reactor:    { en: "Reactor",        fr: "Réacteur",       color: "#14b8a6" },
-  storage:    { en: "Storage",        fr: "Stockage",       color: "#94a3b8" },
+  absorber:   { en: "Absorber (LNG svc)",   fr: "Absorbeur (svc GNL)", color: "#10b981" }, // green G8
+  exchanger:  { en: "Heat Exchanger",       fr: "Échangeur",           color: "#06b6d4" },
+  compressor: { en: "Compressor",           fr: "Compresseur",         color: "#a855f7" },
+  column:     { en: "Fractionation Column", fr: "Colonne",             color: "#22c55e" }, // green LNG svc
+  drum:       { en: "Drum / Vessel",        fr: "Capacité",            color: "#eab308" }, // yellow GN
+  turbine:    { en: "Gas Turbine",          fr: "Turbine",             color: "#ef4444" },
+  pump:       { en: "Pump",                 fr: "Pompe",               color: "#ec4899" },
+  reactor:    { en: "Reactor (N₂ purge)",   fr: "Réacteur (purge N₂)", color: "#a855f7" }, // purple
+  storage:    { en: "Storage",              fr: "Stockage",            color: "#94a3b8" },
 };
 
 const SECTION: Record<Node["section"], { en: string; fr: string }> = {
