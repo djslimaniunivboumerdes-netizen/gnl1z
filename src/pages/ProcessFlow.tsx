@@ -211,7 +211,7 @@ const NODES: Node[] = [
   },
 ];
 
-const EDGES: [string, string, ("feed" | "amine" | "c3" | "mcr" | "lng" | "fuel" | "lpg")?][] = [
+const EDGES: [string, string, ("feed" | "amine" | "c3" | "mcr" | "lng" | "fuel" | "lpg" | "cw")?][] = [
   // Decarbonation
   ["101-F501", "101-F502", "amine"],
   ["101-F502", "101-F501", "amine"],
@@ -222,16 +222,20 @@ const EDGES: [string, string, ("feed" | "amine" | "c3" | "mcr" | "lng" | "fuel" 
   ["102-R03.10", "102-R03.11", "feed"],
   ["102-R03.11", "102-R03.12", "feed"],
   ["102-R03.12", "104-F07.11", "feed"],
-  ["102-R03.12", "104-E05.40", "feed"],
+  ["102-R03.12", "104-E05.20", "feed"],
   // Pre-cooling
-  ["104-E05.40", "106-E05.20", "feed"],
+  ["104-E05.20", "106-E05.20", "feed"],
   ["104-F07.11", "106-E05.20", "feed"],
   ["104-G07.85", "104-G07.90", "c3"],
   ["104-G07.90", "104-G07.91", "c3"],
   ["104-G07.91", "103-G07.86", "c3"],
   ["103-G07.86", "103-K01.10", "c3"],
-  ["103-K01.10", "104-G07.85", "c3"],
-  ["103-K01.10", "104-E05.40", "c3"],
+  ["103-K01.10", "104-E07.11", "c3"],
+  ["104-E07.11", "104-G07.85", "c3"],
+  ["103-K01.10", "104-E05.20", "c3"],
+  // Cooling water (G1 — blue)
+  ["104-E07.11", "104-E05.20", "cw"],
+  ["K05-G07.89", "104-E07.11", "cw"],
   // Liquefaction
   ["106-E05.20", "106-G07.83", "mcr"],
   ["106-G07.83", "105-G07.88", "mcr"],
@@ -251,13 +255,14 @@ const EDGES: [string, string, ("feed" | "amine" | "c3" | "mcr" | "lng" | "fuel" 
 ];
 
 const STREAM_COLOR: Record<string, string> = {
-  feed:  "#fbbf24", // yellow
+  feed:  "#fbbf24", // yellow GN — natural gas inlet
   amine: "#22c55e",
   c3:    "#60a5fa",
   mcr:   "#a78bfa",
   lng:   "#22d3ee",
   fuel:  "#f97316",
   lpg:   "#84cc16",
+  cw:    "#3b82f6", // blue G1 — cooling water
 };
 
 const RADIUS_BY_CAT: Record<Category, number> = {
