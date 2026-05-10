@@ -95,10 +95,15 @@ const NODES: Node[] = [
   },
 
   // --- Propane pre-cooling
-  { id: "104-E05.40", x: 46, y: 22, label: "E05.40", category: "exchanger", section: "cooling",
+  { id: "104-E05.20", x: 46, y: 22, label: "E05.20", category: "exchanger", section: "cooling",
     name: { en: "Feed Gas / Propane Chiller", fr: "Chiller Gaz / Propane" },
     description: { en: "Kettle-type chiller cools dry feed gas with propane refrigerant.", fr: "Chiller type kettle refroidissant le gaz sec via propane." },
     specs: [{ label: "Outlet T", value: "−35 °C" }, { label: "Duty", value: "85 MW" }],
+  },
+  { id: "104-E07.11", x: 52, y: 14, label: "E07.11", category: "exchanger", section: "cooling",
+    name: { en: "Propane Aftercooler (CW)", fr: "Aéroréfrigérant Propane (Eau)" },
+    description: { en: "Cooling-water aftercooler condensing HP propane discharge before the accumulator.", fr: "Aéroréfrigérant à eau condensant le refoulement HP propane avant l'accumulateur." },
+    specs: [{ label: "Service", value: "CW G1" }, { label: "Duty", value: "60 MW" }, { label: "Outlet T", value: "38 °C" }],
   },
   { id: "104-F07.11", x: 38, y: 52, label: "F07.11", category: "drum", section: "cooling",
     name: { en: "Scrub Column", fr: "Colonne de Lavage" },
