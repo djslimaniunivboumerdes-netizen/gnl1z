@@ -356,28 +356,61 @@ export default function ProcessFlow() {
           </defs>
           <rect x="0" y="0" width="100" height="62.5" fill="url(#pf-grid)" />
 
+          {/* Animated flow keyframes — pause on hover of the diagram */}
+          <style>{`
+            @keyframes pf-flow-dash { to { stroke-dashoffset: -6; } }
+            .pf-flow { animation: pf-flow-dash 1.2s linear infinite; }
+            .pf-edges:hover .pf-flow { animation-play-state: paused; }
+            @keyframes pf-flow-pulse { 0%,100% { opacity: 0.35 } 50% { opacity: 1 } }
+            .pf-glow { animation: pf-flow-pulse 1.6s ease-in-out infinite; }
+            .pf-edges:hover .pf-glow { animation-play-state: paused; }
+          `}</style>
+
           {/* Section label band */}
           <text x="50" y="3.5" textAnchor="middle" fontSize="2.2" fontFamily="monospace" fill="rgba(255,255,255,0.4)" letterSpacing="0.4">
             VUE GÉNÉRALE DU PROCÉDÉ — GNL1Z
           </text>
 
           {/* Edges */}
+          <g className="pf-edges">
           {EDGES.map(([a, b, kind = "feed"], i) => {
             const na = nodeMap[a]; const nb = nodeMap[b];
             if (!na || !nb) return null;
             const dimmed = isDimmed(na) && isDimmed(nb);
             const active = selectedId === a || selectedId === b || hoverId === a || hoverId === b;
             const color = STREAM_COLOR[kind];
+            // stagger each dash so the flow feels continuous but not synchronized
+            const delay = `${(i % 6) * -0.2}s`;
             return (
-              <line key={i} x1={na.x} y1={na.y} x2={nb.x} y2={nb.y}
-                stroke={color}
-                strokeOpacity={dimmed ? 0.1 : active ? 1 : 0.55}
-                strokeWidth={active ? 0.5 : 0.3}
-                markerEnd={`url(#arr-${kind})`}
-                style={{ transition: "stroke-opacity 200ms" }}
-              />
+              <g key={i} style={{ opacity: dimmed ? 0.15 : 1, transition: "opacity 200ms" }}>
+                {/* base pipe */}
+                <line x1={na.x} y1={na.y} x2={nb.x} y2={nb.y}
+                  stroke={color}
+                  strokeOpacity={active ? 0.9 : 0.45}
+                  strokeWidth={active ? 0.5 : 0.3}
+                  markerEnd={`url(#arr-${kind})`}
+                />
+                {/* animated flow dashes overlaid on pipe */}
+                <line x1={na.x} y1={na.y} x2={nb.x} y2={nb.y}
+                  stroke={color}
+                  strokeOpacity={active ? 1 : 0.85}
+                  strokeWidth={active ? 0.55 : 0.4}
+                  strokeLinecap="round"
+                  strokeDasharray="0.9 5.1"
+                  className="pf-flow"
+                  style={{ animationDelay: delay }}
+                />
+                {/* soft glow on active edges only */}
+                {active && (
+                  <line x1={na.x} y1={na.y} x2={nb.x} y2={nb.y}
+                    stroke={color} strokeOpacity={0.4} strokeWidth={1.4}
+                    strokeLinecap="round" className="pf-glow"
+                  />
+                )}
+              </g>
             );
           })}
+          </g>
 
           {/* Nodes */}
           {NODES.map((n) => {
