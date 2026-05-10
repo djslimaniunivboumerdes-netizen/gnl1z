@@ -338,6 +338,7 @@ export default function ProcessFlow() {
           ["lng", "LNG"],
           ["lpg", "LPG / NGL"],
           ["fuel", lang === "en" ? "Fuel gas" : "Gaz comb."],
+          ["cw", lang === "en" ? "Cooling water (G1)" : "Eau de refroidissement (G1)"],
         ].map(([k, label]) => (
           <span key={k} className="flex items-center gap-1.5">
             <span className="inline-block w-4 h-0.5" style={{ background: STREAM_COLOR[k as string] }} />
